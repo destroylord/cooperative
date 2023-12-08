@@ -1,10 +1,9 @@
 <x-guest-layout>
     <form method="POST" id="formAuthentication" autocomplete="off" action="{{ route('login') }}">
         @csrf
-
         <!-- Email Address -->
          
-        <x-form.input id="username" label="Username"  type="text" name="username" :value="old('username')" required autofocus autocomplete="username" />
+        <x-form.input id="username" label="Username"  type="text" name="email" :value="old('username')" required autofocus autocomplete="username" />
 
               <div class="mb-3 form-password-toggle">
                   <div class="d-flex justify-content-between">
