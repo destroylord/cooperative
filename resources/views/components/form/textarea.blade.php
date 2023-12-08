@@ -11,3 +11,9 @@
     <label for="{{ $label }}" {{ $attributes->merge(['class' => $labelClass]) }}>{{ $label }}</label>
     <textarea {{ $attributes->merge(['class' => $class]) }} id="{{ $id }}" name="{{ $name }}" rows="3"></textarea>
 </div>
+
+@error($name)
+    <div class="text-danger">
+        {{ $message }}
+    </div>
+@enderror
