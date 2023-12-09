@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CooperativeInterestRequest;
+use App\Models\CooperativeInterest;
 use App\Repositories\CooperativeInterest\CooperativeInterestRepository;
 use Illuminate\Http\Request;
 
@@ -31,15 +33,17 @@ class CooperativeInterestController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.interest.create', ['interest' => new CooperativeInterest]);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CooperativeInterestRequest $request)
     {
-        //
+        $this->cooperativeInterestRepository->createInterest($request);
+    
+        return back()->with('success','Interest created successfully');
     }
 
     /**
@@ -55,22 +59,29 @@ class CooperativeInterestController extends Controller
      */
     public function edit(string $id)
     {
-        //
+         
+
+        return view('admin.interest.edit', [
+            'interest' => $this->cooperativeInterestRepository->getById($id)
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(CooperativeInterestRequest $request, string $id)
     {
-        //
+        $this->cooperativeInterestRepository->updateInterest($request, $id);
+
+        return back();
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $cooperativeInterests)
+    public function destroy(CooperativeInterest $cooperativeInterests)
     {
-        return $this->cooperativeInterestRepository->deleteInterest($cooperativeInterests);
+         $this->cooperativeInterestRepository->deleteInterest($cooperativeInterests);
+         return back();
     }
 }

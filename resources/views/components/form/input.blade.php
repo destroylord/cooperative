@@ -12,8 +12,10 @@
     <label for="{{ $label }}" {{ $attributes->merge(['class' => $labelClass]) }}>{{ $label }}</label>
     <input
         {!! $attributes->merge(['class' => $inputClass]) !!} 
-        type="{{ $type }}" @if(strlen($name) > 0) 
-        name="{{ $name }}" @endif value="{{ old($name,$value) }}" 
+        type="{{ $type }}"
+        @if(strlen($name) > 0) 
+        name="{{ $name }}" 
+        @endif value="{{ old($name,$value) }}" 
         id="{{ $id }}"  @readonly(isset($readonly)) />
 </div>
 

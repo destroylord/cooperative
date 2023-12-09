@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class CooperativeInterest extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'total_interest'
+    ];
 }
