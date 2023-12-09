@@ -76,7 +76,7 @@
               </a>
               <ul class="menu-sub">
                 <li class="menu-item">
-                  <a href="forms-basic-inputs.html" class="menu-link">
+                  <a href="{{ route('member.index') }}" class="menu-link">
                     <div data-i18n="Basic Inputs">Anggota</div>
                   </a>
                 </li>

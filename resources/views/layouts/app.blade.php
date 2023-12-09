@@ -18,6 +18,9 @@
     <meta name="description" content="" />
 
     @include('layouts.partials.styles')
+
+    <!-- Page CSS -->
+    @stack('style')
   </head>
 
   <body>
@@ -65,5 +68,6 @@
     <!-- / Layout wrapper -->
 
     @include('layouts.partials.scripts')
+    @stack('script')
   </body>
 </html>
