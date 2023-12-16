@@ -22,6 +22,7 @@ class CooperativeInterestRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'name' => 'required',
             'total_interest' => 'required|numeric',
         ];
     }

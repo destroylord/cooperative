@@ -11,10 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('cooperative_interests', function (Blueprint $table) {
+        Schema::create('loans', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->integer('total_interest');
+            $table->string('total_loan');
+            $table->string('long_installment');
             $table->timestamps();
         });
     }
@@ -24,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('cooperative_interests');
+        Schema::dropIfExists('loans');
     }
 };

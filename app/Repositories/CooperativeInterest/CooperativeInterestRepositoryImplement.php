@@ -28,7 +28,7 @@ class CooperativeInterestRepositoryImplement extends Eloquent implements Coopera
      */
     public function getAll() :Collection 
     {
-        return CooperativeInterest::select('id', 'total_interest')->get();
+        return CooperativeInterest::select('*')->get();
         
     }
 
@@ -43,18 +43,18 @@ class CooperativeInterestRepositoryImplement extends Eloquent implements Coopera
         return $this->model->find($id);
     }
 
-    public function createInterest(CooperativeInterestRequest $cooperativeInterestRequest)
+    public function createInterest(array $data)
     {
 
-        return $this->model->create([
-            'total_interest' => $cooperativeInterestRequest->total_interest
-        ]);
+        return $this->model->create($data);
 
     }
-    public function updateInterest(CooperativeInterestRequest $cooperativeInterestRequest, string $id)
+    public function updateInterest(array $data, string $id)
     {
+        
         return $this->model->where('id', $id)->update([
-            'total_interest' => $cooperativeInterestRequest->total_interest
+            'name' => $data['name'],
+            'total_interest' => $data['total_interest'],
         ]);
     }
 

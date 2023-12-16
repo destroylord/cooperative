@@ -41,7 +41,7 @@ class CooperativeInterestController extends Controller
      */
     public function store(CooperativeInterestRequest $request)
     {
-        $this->cooperativeInterestRepository->createInterest($request);
+        $this->cooperativeInterestRepository->createInterest($request->all());
     
         return back()->with('success','Interest created successfully');
     }
@@ -71,7 +71,7 @@ class CooperativeInterestController extends Controller
      */
     public function update(CooperativeInterestRequest $request, string $id)
     {
-        $this->cooperativeInterestRepository->updateInterest($request, $id);
+        $this->cooperativeInterestRepository->updateInterest($request->all(), $id);
 
         return back();
     }

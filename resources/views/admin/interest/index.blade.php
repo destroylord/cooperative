@@ -18,6 +18,7 @@
                         @foreach ($interests as $item)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
+                                <td>{{ $item->name }}</td>
                                 <td>{{ $item->total_interest }}</td>
                                 <td>
                                     <div class="dropdown">

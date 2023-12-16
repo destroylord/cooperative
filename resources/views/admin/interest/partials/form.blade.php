@@ -4,6 +4,7 @@
         <small class="text-muted float-end">Default Form</small>
     </div>
     <div class="card-body">
+        <x-form.input type="text" class="w-50" value="{{ $interest->name }}" name="name" id="name" label="Name" />
         <x-form.input type="number" class="w-50" placeholder="Nominal %" value="{{ $interest->total_interest }}" name="total_interest" id="total_interest" label="Total Bunga" />
         <x-primary-button>Submit</x-primary-button>
     </div>

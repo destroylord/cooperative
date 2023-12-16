@@ -14,8 +14,8 @@ interface CooperativeInterestRepository extends Repository{
     public function getAll(): Collection;
 
     public function getById(int $id): ?CooperativeInterest;
-    public function createInterest(CooperativeInterestRequest $cooperativeInterestRequest);
+    public function createInterest(array $data);
 
-    public function updateInterest(CooperativeInterestRequest $cooperativeInterestRequest, string $id);
+    public function updateInterest(array $data, string $id);
     public function deleteInterest(CooperativeInterest $cooperativeInterests);
 }
