@@ -61,6 +61,17 @@
           <div class="menu-inner-shadow"></div>
 
           <ul class="menu-inner py-1">
+
+            @role('member')
+              <li class="menu-item">
+                <a href="javascript:void(0);" class="menu-link">
+                  <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                  <div data-i18n="Dashboards">Data Pinjaman</div>
+                </a>
+              </li>
+            @endrole
+
+            @role('admin')
             <!-- Dashboards -->
             <li class="menu-item">
               <a href="javascript:void(0);" class="menu-link">
@@ -68,6 +79,7 @@
                 <div data-i18n="Dashboards">Dashboard</div>
               </a>
             </li>
+
             <!-- Forms -->
             <li class="menu-item">
               <a href="javascript:void(0);" class="menu-link menu-toggle">
@@ -81,7 +93,7 @@
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a href="forms-input-groups.html" class="menu-link">
+                  <a href="{{ route('deposit.index') }}" class="menu-link">
                     <div data-i18n="Input groups">Tabungan</div>
                   </a>
                 </li>
@@ -109,5 +121,6 @@
                 <div data-i18n="Documentation">Laporan</div>
               </a>
             </li>
+            @endrole
           </ul>
         </aside>

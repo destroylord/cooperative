@@ -16,7 +16,7 @@
         @if(strlen($name) > 0) 
         name="{{ $name }}" 
         @endif value="{{ old($name,$value) }}" 
-        id="{{ $id }}"  @readonly(isset($readonly)) />
+        id="{{ $id }}" @readonly(isset($readonly)) />
 </div>
 
  @error($name)
