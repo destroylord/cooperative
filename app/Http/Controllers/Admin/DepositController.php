@@ -2,24 +2,22 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Enum\TypeSavingEnum;
-use App\Models\Deposit;
-use Illuminate\Http\Request;
+use App\Utils\Helper;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\DepositRequest;
 use App\Models\User;
 use App\Repositories\Deposit\DepositRepository;
-use Spatie\Permission\Models\Role;
 
 class DepositController extends Controller
 {
 
     protected DepositRepository $depositRepository;
+    protected $role;
 
     public function __construct() {
 
         $this->depositRepository = app(DepositRepository::class);
-    
+        $this->role = new Helper();
     }
 
     /**
@@ -28,11 +26,7 @@ class DepositController extends Controller
     public function index()
     {
 
-        $role = Role::where('name', 'member')->first();
-
-        $users = User::role($role->name)
-                    ->select('id', 'name', 'address', 'phone')->get();
-
+        $users = $this->role->getUserRole();
 
         return view('admin.deposit.index', compact('users'));
     }
@@ -67,29 +61,5 @@ class DepositController extends Controller
         return view('admin.deposit.show', [
             'deposites' => $this->depositRepository->getDepositHistoryByUserId($id)
         ]);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Deposit $deposit)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Deposit $deposit)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Deposit $deposit)
-    {
-        //
     }
 }

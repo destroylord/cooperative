@@ -13,7 +13,7 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/member', [MemberController::class, 'index'])->name('member.index');
+Route::get('/member', MemberController::class)->name('member.index');
 Route::resource('cooperative-interest', CooperativeInterestController::class)->except('show');
 
 Route::get('/deposit', [DepositController::class, 'index'])->name('deposit.index');
