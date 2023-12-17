@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/' , fn () => to_route('login'));
 
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -24,6 +25,8 @@ Route::get('/deposit-history/{id}', [DepositController::class, 'show'])->name('d
 
 Route::get('/loan', [LoanController::class,'index'])->name('loan.index');
 Route::get('/loan/create', [LoanController::class,'create'])->name('loan.create');
+Route::post('/loan/store', [LoanController::class,'store'])->name('loan.store');
+Route::get('/loan/user/{id}', [LoanController::class,'show'])->name('user.search');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

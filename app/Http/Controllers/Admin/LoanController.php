@@ -2,13 +2,20 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Loan;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\CooperativeInterest;
+use App\Repositories\Loan\LoanRepository;
 
 class LoanController extends Controller
 {
+
+    protected LoanRepository $loanRepository;
+
+    public function __construct()
+    {
+        $this->loanRepository = app(LoanRepository::class);
+    }
     /**
      * Display a listing of the resource.
      */
@@ -38,32 +45,20 @@ class LoanController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Loan $loan)
+    public function show($id)
     {
-        //
+        $data = $this->loanRepository->getUser($id);
+
+        if(!isset($data)) {
+            return response()->json([
+                'message' => "Data tidak ditemukan",
+            ]);
+        }else {
+            return response()->json([
+                'status' => true,
+                'data' => $data
+            ]);
+        }
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Loan $loan)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Loan $loan)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Loan $loan)
-    {
-        //
-    }
 }

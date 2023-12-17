@@ -13,9 +13,12 @@ return new class extends Migration
     {
         Schema::create('loans', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('total_loan');
-            $table->string('long_installment');
+            $table->foreignId('user_id')->constrained('users');
+            $table->string('total_loan'); // jumlah pinjaman
+            $table->foreignId('interest_id')->constrained('cooperative_interests'); // bunga id
+            $table->string('total_interest'); // total bunga
+            $table->integer('long_installment'); // lama cicilan
+            $table->string('total_installment'); // besar angsuran
             $table->timestamps();
         });
     }

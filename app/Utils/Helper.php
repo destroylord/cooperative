@@ -8,22 +8,27 @@ use Spatie\Permission\Models\Role;
 class Helper 
 {
 
-    protected $role, $user;
+    protected $user;
     
     public function __construct()
     {
-        $this->role = app(Role::class);
         $this->user = app(User::class);
     }
 
     public function getUserRole()
     {
 
-        $role  = $this->role->where('name', 'member')->first();
+        $role = self::getRole();
         $users = $this->user->role($role->name)
                     ->select('id', 'name', 'email','address', 'phone')->get();
 
         return $users;
 
+    }
+
+    public static function getRole()
+    {
+         $roles  = Role::where('name', 'member')->first();
+         return $roles;
     }
 }
