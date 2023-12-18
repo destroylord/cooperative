@@ -60,8 +60,4 @@ class User extends Authenticatable
         return $this->hasMany(Deposit::class);
     }
 
-    public function role()
-    {
-        return $this->belongsTo(Role::class);
-    }
 }

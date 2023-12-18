@@ -21,7 +21,8 @@ class LoanController extends Controller
      */
     public function index()
     {
-        return view('admin.loan.index');
+        return view('admin.loan.index', 
+    ['loans' => $this->loanRepository->getloan()]);
     }
 
     /**
@@ -39,7 +40,8 @@ class LoanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->loanRepository->storeLoan($request->all());
+        return to_route('loan.index');
     }
 
     /**

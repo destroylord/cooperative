@@ -22,6 +22,16 @@ class LoanRepositoryImplement extends Eloquent implements LoanRepository{
 
     // Write something awesome :)
 
+    public function getloan()
+    {
+       return $this->model->with('user', 'interest')->get();
+    }
+
+    public function storeLoan(array $data)
+    {
+        return $this->model->create($data);
+    }
+
     public function getUser(string $id)
     {
         return User::whereHas('roles', function($query){

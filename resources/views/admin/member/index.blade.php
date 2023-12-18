@@ -24,19 +24,24 @@
                         <th>Nama</th>
                         <th>Email</th>
                         <th>No HP</th>
-                        {{-- <th>Actions</th> --}}
                         </tr>
                     </thead>
                     
                     <tbody>
-                        @foreach ($members as $member)
-                        <tr>
+
+                        @forelse($members as $member)
+                            <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $member->name }}</td>
                             <td>{{ $member->email }}</td>
                             <td>{{ $member->phone }}</td>
                         <tr>
-                        @endforeach
+                        @empty
+                            <tr>
+                                <td class="text-center" colspan="4">Data Masih belum ada</td>
+                            </tr>
+                        @endforelse
+                        
                     </tbody>
                 </table>
             </div>

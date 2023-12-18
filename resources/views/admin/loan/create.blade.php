@@ -7,7 +7,7 @@
                     <h4>Tambah Pinjaman</h4>
                 </div>
                 <div class="card-body">
-                    <form action="#" method="POST" autocomplete="off" enctype="multipart/form-data">
+                    <form action="{{ route('loan.store') }}" method="POST" autocomplete="off" enctype="multipart/form-data">
                         @csrf
                         {{-- Search member --}}
                         <div class="d-flex justify-content-start gap-2 align-items-center">
@@ -16,28 +16,31 @@
                         </div>
                         <x-form.input type="text" readonly name="name" id="name" label="Nama" />
                         {{-- //Search member --}}
-                        
-                        <x-form.input type="number" min="0" max="12" onchange="calculateInstallments()" name="amount" id="amount" label="Jumlah Pinjaman" />
+
+                        <x-form.input type="number" onchange="calculateInstallments()" name="total_loan" id="amount" label="Jumlah Pinjaman" />
+
                         <div class="mb-3">
                             <label class="form-label">Bunga</label>
-                            <select name="interest_type" onchange="calculateInstallments()" id="interest_type" class="form-control"> 
+                            <select name="interest_id" onchange="calculateInstallments()" id="interest_type" class="form-control"> 
                                 <option value="-" selected disabled>Pilih salah satu</option>
                                 @foreach ($interests as $interest)
                                     <option value="{{ $interest->id }}">{{ $interest->name }} - {{ $interest->total_interest }}%</option>
                                 @endforeach
                             </select>
                         </div>
+
                         <x-form.input readonly type="number" name="total_interest" id="total_interest" label="Total Bunga" />
+                            
                         <div class="mb-3">
                             <label class="form-label">Lama angsuran</label>
-                            <select name="duration" onchange="calculateInstallments()" id="duration" class="form-control" id="">
+                            <select name="long_installment" onchange="calculateInstallments()" id="duration" class="form-control" id="">
                                 <option value="-" selected disabled>Pilih salah satu</option>
                                 @for ($i = 1; $i <= 12; $i++)
                                     <option value="{{ $i }}">{{ $i }} Bulan</option>
                                 @endfor
                             </select>
                         </div>
-                        <x-form.input readonly type="number" name="total" id="total" label="Besar Angsuran" />
+                        <x-form.input readonly type="number" name="total_installment" id="total" label="Besar Angsuran" />
                         <x-primary-button>Submit</x-primary-button>
                        <a href="{{route('loan.index')}}" class="btn btn-secondary btn-md">Kembali</a>
                     </form>

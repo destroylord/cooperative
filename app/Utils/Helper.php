@@ -20,7 +20,7 @@ class Helper
 
         $role = self::getRole();
         $users = $this->user->role($role->name)
-                    ->select('id', 'name', 'email','address', 'phone')->get();
+                    ->select('*')->get();
 
         return $users;
 
