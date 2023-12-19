@@ -9,6 +9,10 @@ interface LoanRepository extends Repository{
     // Write something awesome :)
 
     public function getloan();
-    public function storeLoan(array $data);
+
     public function getUser(string $id);
+
+    public function getInstallmentList(string $id);
+
+    public function updateInstallment(string $id, string $user_id);
 }

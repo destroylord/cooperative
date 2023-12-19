@@ -2,19 +2,24 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Installment;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\CooperativeInterest;
 use App\Repositories\Loan\LoanRepository;
+use App\Services\Loan\LoanService;
+
 
 class LoanController extends Controller
 {
 
-    protected LoanRepository $loanRepository;
+    protected  $loanRepository;
+    protected $loanService;
 
     public function __construct()
     {
         $this->loanRepository = app(LoanRepository::class);
+        $this->loanService = app(LoanService::class);
     }
     /**
      * Display a listing of the resource.
@@ -40,8 +45,10 @@ class LoanController extends Controller
      */
     public function store(Request $request)
     {
-        $this->loanRepository->storeLoan($request->all());
-        return to_route('loan.index');
+
+        $this->loanService->storeLoanAndImplements($request->all());
+        return redirect()->route('loan.index');
+
     }
 
     /**
@@ -58,6 +65,40 @@ class LoanController extends Controller
         }else {
             return response()->json([
                 'status' => true,
+                'data' => $data
+            ]);
+        }
+    }
+
+    /**
+     * Display installemtn list by Loan
+     * @param string $id
+     * 
+    */
+    
+    public function installmentList($id)
+    {
+        
+       return view('admin.loan.list-installment', [
+           'installment' => $this->loanRepository->getInstallmentList($id)->get(),
+       ]);
+
+    }
+
+    public function installmentStore($id, $user_id)
+    {
+
+        $data = $this->loanRepository->updateInstallment($id, $user_id);
+
+        if(isset($data['error'])) {
+            return response()->json([
+                'status' => false,
+                'message' => $data['error']
+            ]);
+        }else {
+            return response()->json([
+                'status' => true,
+                'message' => "Data Berhasil Diupdate",
                 'data' => $data
             ]);
         }

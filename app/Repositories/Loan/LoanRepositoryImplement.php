@@ -2,6 +2,7 @@
 
 namespace App\Repositories\Loan;
 
+use App\Models\Installment;
 use LaravelEasyRepository\Implementations\Eloquent;
 use App\Models\Loan;
 use App\Models\User;
@@ -27,10 +28,6 @@ class LoanRepositoryImplement extends Eloquent implements LoanRepository{
        return $this->model->with('user', 'interest')->get();
     }
 
-    public function storeLoan(array $data)
-    {
-        return $this->model->create($data);
-    }
 
     public function getUser(string $id)
     {
@@ -38,5 +35,17 @@ class LoanRepositoryImplement extends Eloquent implements LoanRepository{
                     $query->where('name', 'member');
                 })
                 ->find($id, ['id', 'name']);
+    }
+
+    public function getInstallmentList(string $id)
+    {
+        return Installment::with('user')->where('user_id', $id);
+    }
+
+    public function updateInstallment(string $id, string $user_id)
+    {
+        return Installment::where(['id' => $id , 'user_id' => $user_id ])
+                            ->first()
+                            ->update(['status' => 'Paid']);
     }
 }

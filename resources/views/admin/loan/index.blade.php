@@ -18,6 +18,7 @@
                         <th>Bunga</th>
                         <th>Lama angsuran</th>
                         <th>Besar angsuran</th>
+                        <th>Aksi</th>
                         </tr>
                     </thead>
                     
@@ -31,6 +32,9 @@
                                 <td>Rp. {{ number_format($loan->total_interest) }}</td>
                                 <td>{{ $loan->long_installment }} Bulan</td>
                                 <td>Rp. {{ number_format($loan->total_installment) }}</td>
+                                <td>
+                                    <a href="{{ route('loan.installment', $loan->id) }}" class="btn btn-info btn-sm text-center">Lihat Angsuran</a>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>

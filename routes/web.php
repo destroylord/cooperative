@@ -27,6 +27,9 @@ Route::get('/loan', [LoanController::class,'index'])->name('loan.index');
 Route::get('/loan/create', [LoanController::class,'create'])->name('loan.create');
 Route::post('/loan/store', [LoanController::class,'store'])->name('loan.store');
 Route::get('/loan/user/{id}', [LoanController::class,'show'])->name('user.search');
+Route::get('/loan/installment/{id}', [LoanController::class,'installmentList'])->name('loan.installment');
+Route::post('/loan/installment/store/{id}/{user_id}', [LoanController::class,'installmentStore'])->name('loan.installment.store');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
