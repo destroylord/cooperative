@@ -1,4 +1,5 @@
 <x-guest-layout>
+  <x-slot:title>Login</x-slot:title />
     <form method="POST" id="formAuthentication" autocomplete="off" action="{{ route('login') }}">
         @csrf
         <!-- Email Address -->

@@ -13,7 +13,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-    <title>Register Basic - Pages | Sneat - Bootstrap 5 HTML Admin Template - Pro</title>
+    <title>{{ $title ?? 'Laravel' }} - Koperasi Karyawan STIE Mandala Jember</title>
 
     @include('layouts.partials.styles')
         <!-- Page CSS -->
@@ -89,8 +89,8 @@
                 </a>
               </div>
               <!-- /Logo -->
-              <h4 class="mb-2">Adventure starts here 🚀</h4>
-              <p class="mb-4">Make your app management easy and fun!</p>
+              <h4 class="mb-2">{{ $title }}</h4>
+              <p class="mb-4">Koperasi Karyawan STIE Mandala Jember</p>
 
               {{ $slot }}
             </div>
