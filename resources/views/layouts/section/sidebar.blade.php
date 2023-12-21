@@ -66,7 +66,7 @@
               <li class="menu-item">
                 <a href="javascript:void(0);" class="menu-link">
                   <i class="menu-icon tf-icons bx bx-home-circle"></i>
-                  <div data-i18n="Dashboards">Data Pinjaman</div>
+                  <div data-i18n="Dashboards">Dashboard</div>
                 </a>
               </li>
             @endrole

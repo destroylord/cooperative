@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Member\DashboardController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -7,7 +8,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/' , fn () => to_route('login'));
 
 
-Route::view('/member/dashboard', 'member.dashboard')->name('member.dashboard');
+Route::get('/member/dashboard', DashboardController::class )->name('member.dashboard');
 
 
 Route::middleware('auth')->group(function () {

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Member;
 
 use App\Http\Controllers\Controller;
+use App\Models\Installment;
+use App\Models\Loan;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -12,6 +14,9 @@ class DashboardController extends Controller
      */
     public function __invoke()
     {
-        return view('member.dashboard');
+        $loans = Loan::with('interest')->where('user_id', auth()->user()->id)->get();
+        $installments = Installment::where('user_id', auth()->user()->id)->get();
+
+        return view('member.dashboard', compact('loans', 'installments'));
     }
 }
