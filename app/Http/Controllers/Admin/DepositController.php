@@ -7,16 +7,19 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\DepositRequest;
 use App\Models\User;
 use App\Repositories\Deposit\DepositRepository;
+use App\Services\Deposit\DepositService;
 
 class DepositController extends Controller
 {
 
     protected DepositRepository $depositRepository;
+    protected DepositService $depositService;
     protected $role;
 
     public function __construct() {
 
         $this->depositRepository = app(DepositRepository::class);
+        $this->depositService =  app(DepositService::class);
         $this->role = new Helper();
     }
 
@@ -26,9 +29,9 @@ class DepositController extends Controller
     public function index()
     {
 
-        $users = $this->role->getUserRole();
+        $data = $this->depositService->getDepositHistory();
 
-        return view('admin.deposit.index', compact('users'));
+        return view('admin.deposit.index', compact('data'));
     }
 
     /**

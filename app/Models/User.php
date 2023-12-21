@@ -55,7 +55,7 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function deposit()
+    public function deposits()
     {
         return $this->hasMany(Deposit::class);
     }
