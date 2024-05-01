@@ -2,7 +2,7 @@
           <div class="app-brand demo">
             <a href="index.html" class="app-brand-link">
               <span class="app-brand-logo demo">
-                <svg
+                {{-- <svg
                   width="25"
                   viewBox="0 0 25 42"
                   version="1.1"
@@ -48,9 +48,10 @@
                       </g>
                     </g>
                   </g>
-                </svg>
+                </svg> --}}
+                <img src="{{ asset('assets/img/koperasi_logo.png') }}" width="60" alt="">
               </span>
-              <span class="app-brand-text demo menu-text fw-bold ms-2">Sneat</span>
+              <span class="app-brand-text demo menu-text fw-bold ms-2">Koperasi</span>
             </a>
 
             <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
@@ -115,7 +116,7 @@
             </li>
              <li class="menu-item">
               <a
-                href="https://demos.themeselection.com/sneat-bootstrap-html-admin-template/documentation/"
+                href="{{ route('report.loan') }}"
                 class="menu-link">
                 <i class="menu-icon tf-icons bx bx-file"></i>
                 <div data-i18n="Documentation">Laporan</div>

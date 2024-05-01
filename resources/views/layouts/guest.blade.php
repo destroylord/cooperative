@@ -37,7 +37,8 @@
               <div class="app-brand justify-content-center">
                 <a href="index.html" class="app-brand-link gap-2">
                   <span class="app-brand-logo demo">
-                    <svg
+                    <img src="{{ asset('assets/img/koperasi_logo.png') }}" width="100" alt="">
+                    {{-- <svg
                       width="25"
                       viewBox="0 0 25 42"
                       version="1.1"
@@ -83,14 +84,14 @@
                           </g>
                         </g>
                       </g>
-                    </svg>
+                    </svg> --}}
                   </span>
-                  <span class="app-brand-text demo text-body fw-bold">Sneat</span>
+                  {{-- <span class="app-brand-text demo text-body fw-bold">Sneat</span> --}}
                 </a>
               </div>
               <!-- /Logo -->
               <h4 class="mb-2">{{ $title }}</h4>
-              <p class="mb-4">Koperasi Karyawan STIE Mandala Jember</p>
+              <p class="mb-4">Koperasi Karyawan ITS Mandala Jember</p>
 
               {{ $slot }}
             </div>

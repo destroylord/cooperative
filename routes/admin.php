@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\CooperativeInterestController;
 use App\Http\Controllers\Admin\MemberController;
 use App\Http\Controllers\Admin\DepositController;
 use App\Http\Controllers\Admin\LoanController;
+use App\Http\Controllers\Admin\ReportController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -24,3 +25,5 @@ Route::post('/loan/store', [LoanController::class,'store'])->name('loan.store');
 Route::get('/loan/user/{id}', [LoanController::class,'show'])->name('user.search');
 Route::get('/loan/installment/{id}', [LoanController::class,'installmentList'])->name('loan.installment');
 Route::post('/loan/installment/store/{id}/{user_id}', [LoanController::class,'installmentStore'])->name('loan.installment.store');
+
+Route::get('/laporan', [ReportController::class, 'loan'])->name('report.loan');

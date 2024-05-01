@@ -4,8 +4,15 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center">
-                    <h4>Data Pinjaman</h4>
-                    <a href="{{ route('loan.create') }}" class="btn btn-primary btn-sm"> <i class="bx bx-plus"></i> Tambah Pinjaman</a>
+                    <h4>Laporan Data Pinjaman</h4>
+                    <div>
+                        <select name="" id="" class="form-control">
+                            <option value="-">Pilih Bulan</option>
+                            @for ($i = 0; $i < 12; $i++)
+                                <option value="{{ $i + 1 }}">{{ $i + 1 }}</option>
+                            @endfor
+                        </select>
+                    </div>
                 </div>
             <div class="table-responsive text-nowrap">
                 <table class="table">
@@ -22,7 +29,7 @@
                         </tr>
                     </thead>
                     
-                    <tbody>
+                    {{-- <tbody>
                         @foreach ($loans as $loan)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
@@ -37,7 +44,7 @@
                                 </td>
                             </tr>
                         @endforeach
-                    </tbody>
+                    </tbody> --}}
                 </table>
             </div>
             </div>
