@@ -8,6 +8,8 @@ use App\Http\Controllers\Controller;
 use App\Models\CooperativeInterest;
 use App\Repositories\Loan\LoanRepository;
 use App\Services\Loan\LoanService;
+use Barryvdh\DomPDF\Facade\Pdf;
+
 
 
 class LoanController extends Controller
@@ -102,6 +104,13 @@ class LoanController extends Controller
                 'data' => $data
             ]);
         }
+    }
+
+
+    public function invoice($invoice_id) {
+        $invoice = Installment::findOrFail($invoice_id);
+        $pdf = PDF::loadView('admin.loan.invoice', compact('invoice'));
+        return $pdf->stream('invoice.pdf');
     }
 
 }

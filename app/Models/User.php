@@ -33,6 +33,7 @@ class User extends Authenticatable
         'type_work',
         'citizenship',
         'phone',
+        'nik'
     ];
 
     /**

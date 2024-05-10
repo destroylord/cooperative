@@ -1,10 +1,13 @@
 <x-guest-layout>
 
     <x-slot:title>Register</x-slot:title />
-
+    
     <form id="formAuthentication" autocomplete="off" class="mb-3" action="{{ route('register') }}" method="POST">
-
+        
+        <small>Sesuaikan data diri anda dengan ktp</small>
         @csrf
+        
+        <x-form.input id="nik" type="number" name="nik" label="nik" />
         <x-form.input id="name" type="text" name="name" label="Nama Lengkap" />
         <x-form.input id="email" type="email" name="email" label="Email" />
 

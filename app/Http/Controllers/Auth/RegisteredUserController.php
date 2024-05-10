@@ -5,14 +5,11 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserRequest;
 use App\Models\User;
-use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\Rules;
 use Illuminate\View\View;
+Use Alert;
 
 class RegisteredUserController extends Controller
 {
@@ -46,14 +43,16 @@ class RegisteredUserController extends Controller
             'type_work' => $request->type_work,
             'citizenship' => $request->citizenship,
             'phone' => $request->phone,
+            'nik' => $request->nik
         ]);
 
         $user->assignRole('member');
 
         event(new Registered($user));
 
-        Auth::login($user);
+        // Auth::login($user);
 
-        return back()->with('success', 'Registrasi Berhasil');
+        Alert::success('Behasil', 'Selamat akun anda telah terdaftar, silahkan login');
+        return redirect()->route('login');
     }
 }

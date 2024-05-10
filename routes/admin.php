@@ -25,5 +25,7 @@ Route::post('/loan/store', [LoanController::class,'store'])->name('loan.store');
 Route::get('/loan/user/{id}', [LoanController::class,'show'])->name('user.search');
 Route::get('/loan/installment/{id}', [LoanController::class,'installmentList'])->name('loan.installment');
 Route::post('/loan/installment/store/{id}/{user_id}', [LoanController::class,'installmentStore'])->name('loan.installment.store');
+Route::get('/loan/installment/invoice/{invoice_id}', [LoanController::class, 'invoice'])->name('invoice.show');
+
 
 Route::get('/laporan', [ReportController::class, 'loan'])->name('report.loan');

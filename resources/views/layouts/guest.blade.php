@@ -24,6 +24,7 @@
   </head>
 
   <body>
+    @include('sweetalert::alert')
     <!-- Content -->
 
     <div class="container-xxl">

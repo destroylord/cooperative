@@ -27,7 +27,10 @@
                                 <td>{{ $item->month }}</td>
                                 <td>Rp. {{ number_format($item->amount) }}</td>
                                 <td> {{ $item->status }} </td>
-                                <td><button onclick="buttonBuy({{ $item->id }}, {{ $item->user_id }})" {{ ($item->status == 'Paid' ? 'disabled' : '') }} class="btn btn-danger btn-sm">Bayar</button></td>
+                                <td>
+                                    <a href="#" onclick="printInvoice('{{ route('invoice.show', $item->id) }}')" class="btn btn-info btn-sm">Buat Invoice</a>
+                                    <button onclick="buttonBuy({{ $item->id }}, {{ $item->user_id }})" {{ ($item->status == 'Paid' ? 'disabled' : '') }} class="btn btn-danger btn-sm">Bayar</button>
+                                </td>
                             </tr>
                             @endforeach
                             
@@ -45,6 +48,12 @@
     </div>
 
     @push('script')
+    <script>
+        function printInvoice(url) {
+            var w = window.open(url);
+            w.print();
+        }
+    </script>
     <script>
 
         function buttonBuy(i, user_id)

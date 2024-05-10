@@ -5,6 +5,7 @@
             <div class="card">
                 <div class="card-header">
                     <h4>Data Tabungan</h4>
+                    <a href="{{ route('loan.create') }}" class="btn btn-primary btn-sm"> <i class="bx bx-plus"></i> Tambah Tabungan</a>
                 </div>
             <div class="table-responsive text-nowrap">
                 <table class="table">

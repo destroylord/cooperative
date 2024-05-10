@@ -31,6 +31,7 @@ class UserSeeder extends Seeder
            'type_work' => 'Full Time',
            'citizenship' => 'Indonesia',
            'phone' => '081234567890',
+           'nik' => '123456789012345',
            'created_at' => now(),
        ]);
 

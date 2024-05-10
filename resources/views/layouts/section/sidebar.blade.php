@@ -65,7 +65,7 @@
 
             @role('member')
               <li class="menu-item">
-                <a href="javascript:void(0);" class="menu-link">
+                <a href="{{ route('admin.dashboard') }}" class="menu-link">
                   <i class="menu-icon tf-icons bx bx-home-circle"></i>
                   <div data-i18n="Dashboards">Dashboard</div>
                 </a>
@@ -75,7 +75,7 @@
             @role('admin')
             <!-- Dashboards -->
             <li class="menu-item">
-              <a href="javascript:void(0);" class="menu-link">
+              <a href="{{ route('admin.dashboard') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Dashboards">Dashboard</div>
               </a>
