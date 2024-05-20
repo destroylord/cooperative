@@ -43,6 +43,9 @@ class AuthenticatedSessionController extends Controller
         if ($user->hasRole('member')) 
               return redirect()->to('member/dashboard');
         
+        if ($user->hasRole('ketua')) 
+            return redirect()->to('ketua/laporan');
+        
     }
     /**
      * Destroy an authenticated session.

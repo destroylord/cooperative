@@ -35,9 +35,33 @@ class UserSeeder extends Seeder
            'created_at' => now(),
        ]);
 
+         $ketua = User::create([
+           'name' => 'Ketua',
+           'username' => 'ketua',
+           'email' => 'ketua@example.com',
+           'password' => Hash::make('password'),
+           'email_verified_at' => now(),
+           'place_of_birth' => 'Jakarta',
+           'date_of_birth' => '1990-01-01',
+           'address' => 'Jakarta',
+           'gender' => 'L',
+           'region' => 'Jakarta',
+           'marital_status' => 'Menikah',
+           'type_work' => 'Full Time',
+           'citizenship' => 'Indonesia',
+           'phone' => '081234567890',
+           'nik' => '123456789012342',
+           'created_at' => now(),
+         ]);
+
+
+
        // Assign the "admin" role to the user
        $adminRole = Role::where('name', 'admin')->first();
+       $ketuaRole = Role::where('name', 'ketua')->first();
+
        $user->assignRole($adminRole);
+       $ketua->assignRole($ketuaRole);
 
     }
 }

@@ -123,5 +123,15 @@
               </a>
             </li>
             @endrole
+            @role('ketua')
+            <li class="menu-item">
+              <a
+                href="{{ route('report.loan') }}"
+                class="menu-link">
+                <i class="menu-icon tf-icons bx bx-file"></i>
+                <div data-i18n="Documentation">Laporan</div>
+              </a>
+            </li>
+            @endrole
           </ul>
         </aside>
