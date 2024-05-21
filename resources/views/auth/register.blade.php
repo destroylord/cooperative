@@ -90,7 +90,7 @@
             </div>
         </div>
         
-        <button type="submit" class="btn btn-primary d-grid w-100">Sign up</button>
+        <button type="submit" class="btn btn-primary d-grid w-100">Create Account</button>
 
     </form>
 

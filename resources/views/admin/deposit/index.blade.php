@@ -5,7 +5,7 @@
             <div class="card">
                 <div class="card-header">
                     <h4>Data Tabungan</h4>
-                    <a href="{{ route('loan.create') }}" class="btn btn-primary btn-sm"> <i class="bx bx-plus"></i> Tambah Tabungan</a>
+                    {{-- <a href="{{ route('loan.create') }}" class="btn btn-primary btn-sm"> <i class="bx bx-plus"></i> Tambah Tabungan</a> --}}
                 </div>
             <div class="table-responsive text-nowrap">
                 <table class="table">
@@ -30,10 +30,10 @@
                             <td>{{ $user['user']->name }}</td>
                             <td>{{ $user['user']->address }}</td>
                             <td>{{ $user['user']->phone }}</td>
-                            <td>{{ $user['data']['simpanan_pokok'] }}</td>
-                            <td>{{ $user['data']['simpanan_wajib'] }}</td>
-                            <td>{{ $user['data']['simpanan_sukarela'] }}</td>
-                            <td>{{ $user['data']['total_simpanan'] }}</td>
+                            <td>{{ $user['data']['simpanan_pokok'] ?? 0 }}</td>
+                            <td>{{ $user['data']['simpanan_wajib'] ?? 0 }}</td>
+                            <td>{{ $user['data']['simpanan_sukarela'] ?? 0 }}</td>
+                            <td>{{ $user['data']['total_simpanan'] ?? 0 }}</td>
                             <td class="d-flex gap-2">
                                 <a href="{{ route('deposit.create', $user['user']->id) }}" class="btn btn-primary"> <i class="bx bx-plus"></i></a>
                                 <a href="{{ route('deposit.history', $user['user']->id) }}" class="btn btn-info"> <i class="bx bx-info-circle"></i></a>

@@ -7,6 +7,7 @@ use App\Models\Deposit;
 use App\Models\User;
 use LaravelEasyRepository\Service;
 
+
 class DepositServiceImplement extends Service implements DepositService{
 
      /**
@@ -24,16 +25,17 @@ class DepositServiceImplement extends Service implements DepositService{
     public function getDepositHistory(): array
     {
 
-      $users = User::has('deposits')->get();
+    $users = User::role('member')->has('deposits')->orDoesntHave('deposits')->get();
+      
 
-       return $users->map(function ($user) {
+      return $users->map(function ($user) {
           return [
               'user' => $user,
               'data' => [
                   'simpanan_pokok' => $this->whereClause($user->id, TypeSavingEnum::PRINCIPAL),
                   'simpanan_wajib' => $this->whereClause($user->id, TypeSavingEnum::MANDATORY),
                   'simpanan_sukarela' => $this->whereClause($user->id, TypeSavingEnum::VOLUNTARY),
-                  'total_simpanan' => $this->getTotalAmount($user->id, [TypeSavingEnum::PRINCIPAL, TypeSavingEnum::MANDATORY, TypeSavingEnum::VOLUNTARY]),
+                  'total_simpanan' => max(0, $this->getTotalAmount($user->id, [TypeSavingEnum::PRINCIPAL, TypeSavingEnum::MANDATORY, TypeSavingEnum::VOLUNTARY])),
               ]
           ];
       })->toArray();

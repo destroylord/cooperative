@@ -11,7 +11,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::view('/admin/dashboard', 'admin.dashboard')->middleware(['auth', 'verified'])->name('admin.dashboard');
 
-Route::get('/member', MemberController::class)->name('member.index');
+Route::get('/member', [MemberController::class, 'index'])->name('member.index');
+Route::delete('/member/{id}', [MemberController::class, 'destroy'])->name('member.destroy');
 Route::resource('cooperative-interest', CooperativeInterestController::class)->except('show');
 
 Route::get('/deposit', [DepositController::class, 'index'])->name('deposit.index');
