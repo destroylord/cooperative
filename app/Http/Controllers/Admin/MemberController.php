@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Utils\Helper;
+use Spatie\Permission\Models\Role;
 
 class MemberController extends Controller
 {
@@ -21,7 +22,7 @@ class MemberController extends Controller
     public function destroy($id)
     {
         User::findOrFail($id)->delete();
-        return redirect()->route('admin.member.index');
+        return back();
     }
 
 }
