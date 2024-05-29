@@ -6,6 +6,7 @@ use App\Enum\TypeSavingEnum;
 use App\Models\Deposit;
 use App\Models\User;
 use LaravelEasyRepository\Service;
+use Spatie\Permission\Models\Role;
 
 
 class DepositServiceImplement extends Service implements DepositService{
@@ -25,8 +26,9 @@ class DepositServiceImplement extends Service implements DepositService{
     public function getDepositHistory(): array
     {
 
-    $users = User::role('member')->has('deposits')->orDoesntHave('deposits')->get();
-      
+   $memberRole = Role::where('name', 'member')->first();
+
+    $users = User::role($memberRole)->get();
 
       return $users->map(function ($user) {
           return [
@@ -36,6 +38,7 @@ class DepositServiceImplement extends Service implements DepositService{
                   'simpanan_wajib' => $this->whereClause($user->id, TypeSavingEnum::MANDATORY),
                   'simpanan_sukarela' => $this->whereClause($user->id, TypeSavingEnum::VOLUNTARY),
                   'total_simpanan' => max(0, $this->getTotalAmount($user->id, [TypeSavingEnum::PRINCIPAL, TypeSavingEnum::MANDATORY, TypeSavingEnum::VOLUNTARY])),
+                  'created_at' => $user->deposits()->latest()->value('created_at'),
               ]
           ];
       })->toArray();
