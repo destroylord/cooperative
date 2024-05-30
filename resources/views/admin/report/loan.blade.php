@@ -74,40 +74,5 @@
             printWindow.document.close();
             printWindow.print();
         }
-
-                function printTable() {
-            const table = document.getElementById("dataTable");
-            const printWindow = window.open("", "_blank");
-            printWindow.document.open();
-            printWindow.document.write(`
-                <html>
-                <head>
-                    <title>Laporan Data Simpanan</title>
-                </head>
-                <body>
-                    <table style="border-collapse: collapse; border: 1px solid black">
-                        <thead style="border-bottom: 1px solid black">
-                            <tr>
-                                <th style="border-right: 1px solid black; padding: 5px">No.</th>
-                                <th style="border-right: 1px solid black; padding: 5px">Nama</th>
-                                <th style="border-right: 1px solid black; padding: 5px">Alamat</th>
-                                <th style="border-right: 1px solid black; padding: 5px">No HP</th>
-                                <th style="border-right: 1px solid black; padding: 5px">Total Simpanan Pokok</th>
-                                <th style="border-right: 1px solid black; padding: 5px">Total Simpanan Wajib</th>
-                                <th style="border-right: 1px solid black; padding: 5px">Total Simpanan Sukarela</th>
-                                <th style="border-right: 1px solid black; padding: 5px">Total Simpanan</th>
-                                <th style="padding: 5px">Tanggal</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            ${Array.from(table.querySelectorAll('tbody tr')).map(tr => `<tr>${Array.from(tr.querySelectorAll('td')).map(td => `<td style="border-right: 1px solid black; padding: 5px">${td.innerHTML}</td>`).join('')}</tr>`).join('')}
-                        </tbody>
-                    </table>
-                </body>
-                </html>
-            `);
-            printWindow.document.close();
-            printWindow.print();
-        }
     </script>
 </x-app-layout>
