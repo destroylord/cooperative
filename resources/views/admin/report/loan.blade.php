@@ -36,7 +36,7 @@
                                 <td>{{ $user['data']['simpanan_wajib'] ?? 0 }}</td>
                                 <td>{{ $user['data']['simpanan_sukarela'] ?? 0 }}</td>
                                 <td>{{ $user['data']['total_simpanan'] ?? 0 }}</td>
-                                <td>{{ $user['data']['created_at']->format('d-m-Y') }}</td>
+                                <td>{{ $user['data']['created_at']->format('d-m-Y') ?? '' }}</td>
                             </tr>
                         @empty
                             <tr>
