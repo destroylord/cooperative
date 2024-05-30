@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\ReportController;
 use App\Http\Controllers\Member\DashboardController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -13,7 +14,7 @@ Route::get('/member/dashboard', DashboardController::class )->name('member.dashb
 
 Route::middleware('auth')->group(function () {
 
-    Route::get('/ketua/laporan', fn() => view('chairman.report'))->name('ketua.laporan.index');
+    Route::get('/ketua/laporan', [ReportController::class, 'loan'])->name('ketua.laporan.index');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');

@@ -1,10 +1,10 @@
 <x-app-layout>
 
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center">
-                    <h4>Laporan Data Pinjaman</h4>
+                    <h4>Laporan Data Simpanan</h4>
                     <div>
                         <button type="button" class="btn btn-primary" onclick="printTable()"><i class="bx bx-print"></i> Print</button>
                     </div>
