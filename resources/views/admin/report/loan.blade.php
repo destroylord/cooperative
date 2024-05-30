@@ -26,7 +26,7 @@
                         </thead>
                         <tbody>
                             <!-- Data rows go here -->
-                            @foreach ($data as $user)
+                        @forelse ($data as $user)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $user['user']->name }}</td>
@@ -38,7 +38,11 @@
                                 <td>{{ $user['data']['total_simpanan'] ?? 0 }}</td>
                                 <td>{{ $user['data']['created_at']->format('d-m-Y') }}</td>
                             </tr>
-                        @endforeach
+                        @empty
+                            <tr>
+                                <td class="text-center" colspan="9">Data Masih belum ada</td>
+                            </tr>
+                        @endforelse
                         </tbody>
                     </table>
                 </div>
