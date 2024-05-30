@@ -5,10 +5,10 @@ namespace App\Services\Loan;
 use App\Models\installment;
 use App\Models\Loan;
 use LaravelEasyRepository\Service;
-use App\Repositories\Loan\LoanRepository;
 use Carbon\Carbon;
 
-class LoanServiceImplement extends Service implements LoanService{
+class LoanServiceImplement extends Service implements LoanService
+{
 
     public function storeLoanAndImplements(array $data)
     {

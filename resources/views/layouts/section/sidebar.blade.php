@@ -114,13 +114,25 @@
                 <div data-i18n="Documentation">Pengaturan Bunga</div>
               </a>
             </li>
-             <li class="menu-item">
-              <a
-                href="{{ route('report.loan') }}"
-                class="menu-link">
-                <i class="menu-icon tf-icons bx bx-file"></i>
-                <div data-i18n="Documentation">Laporan</div>
+             
+               <li class="menu-item">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-detail"></i>
+                <div data-i18n="Form Elements">Laporan</div>
               </a>
+              <ul class="menu-sub">
+                <li class="menu-item">
+                  <a href="{{ route('report.deposit') }}" class="menu-link">
+                    <div data-i18n="Basic Inputs">Simpanan</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="{{ route('report.loan') }}" class="menu-link">
+                    <div data-i18n="Input groups">Pinjaman</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
             </li>
             @endrole
             @role('ketua')
